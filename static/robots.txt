@@ -1,0 +1,5 @@
+# allow crawling everything by default
+User-agent: *
+# The privacy policy names the person running the site: keep it out of search indexes and crawl datasets.
+# It stays one click away for visitors (footer and sign-in page), which is what GDPR requires.
+Disallow: /privacy

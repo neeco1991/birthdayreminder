@@ -1,0 +1,19 @@
+FROM node:24-slim
+
+# ca-certificates: the Supabase CLI is a Go binary and needs system CAs for HTTPS.
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends ca-certificates \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& npm install -g pnpm@10 \
+	&& mkdir -p /app/node_modules \
+	&& chown -R node:node /app
+
+# uid 1000, so files created through the bind mount belong to the host user.
+USER node
+WORKDIR /app
+
+# Keep the pnpm store on the node_modules volume so installs can hardlink.
+ENV npm_config_store_dir=/app/node_modules/.pnpm-store
+
+EXPOSE 5173
+CMD ["sh", "-c", "pnpm install && pnpm dev --host 0.0.0.0"]
