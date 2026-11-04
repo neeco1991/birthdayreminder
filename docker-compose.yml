@@ -6,7 +6,8 @@ services:
     ports:
       - '5173:5173'
     env_file:
-      - path: .env
+      # `make db-push ENV_FILE=.env.prod` runs a target against another project
+      - path: ${ENV_FILE:-.env}
         required: false
     volumes:
       - .:/app

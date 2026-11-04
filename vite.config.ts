@@ -12,8 +12,8 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			// Frankfurt: next to the Supabase database, and keeps processing in the EU as the privacy policy says.
-			adapter: adapter({ regions: ['fra1'] })
+			// Dublin: next to the Supabase database (eu-west-1), and keeps processing in the EU as the privacy policy says.
+			adapter: adapter({ regions: ['dub1'] })
 		})
 	],
 	test: {

@@ -159,10 +159,10 @@
 	</p>
 	<ul>
 		<li>
-			<strong>Supabase</strong> (database and sign-in). The database is hosted in the EU (Frankfurt, Germany).
+			<strong>Supabase</strong> (database and sign-in). The database is hosted in the EU (Ireland).
 		</li>
 		<li>
-			<strong>Vercel</strong> (website hosting). The server code runs in the EU (Frankfurt, Germany).
+			<strong>Vercel</strong> (website hosting). The server code runs in the EU (Ireland).
 		</li>
 		<li>
 			<strong>Resend</strong> (sending emails). Resend handles your email address and the content of your

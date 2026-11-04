@@ -1,6 +1,7 @@
 // Uploads the sign-in emails (src/lib/server/auth-emails.ts) to the Supabase project in
 // SUPABASE_PROJECT_REF, with the code length and expiry they promise. Run with `make auth-emails`.
-// Needs a SUPABASE_ACCESS_TOKEN with the auth_config_write and project_admin_write permissions.
+// Needs a SUPABASE_ACCESS_TOKEN with Project Settings and Auth Config set to Read-write
+// (project_admin_write and auth_config_write in the API docs).
 import {
 	OTP_EXPIRY_SECONDS,
 	OTP_LENGTH,

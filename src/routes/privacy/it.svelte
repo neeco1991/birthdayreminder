@@ -171,11 +171,10 @@
 	</p>
 	<ul>
 		<li>
-			<strong>Supabase</strong> (database e accesso). Il database si trova nell'UE (Francoforte, Germania).
+			<strong>Supabase</strong> (database e accesso). Il database si trova nell'UE (Irlanda).
 		</li>
 		<li>
-			<strong>Vercel</strong> (hosting del sito). Il codice del server viene eseguito nell'UE (Francoforte,
-			Germania).
+			<strong>Vercel</strong> (hosting del sito). Il codice del server viene eseguito nell'UE (Irlanda).
 		</li>
 		<li>
 			<strong>Resend</strong> (invio delle email). Resend tratta il tuo indirizzo email e il contenuto
