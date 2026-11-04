@@ -44,6 +44,18 @@ export async function claimAiCall(userId: string, feature: AiFeature): Promise<b
 }
 
 /**
+ * Deletes counts from earlier days. claim_ai_call does too, but only when someone uses AI, and the
+ * privacy policy promises they're kept only until the end of the day. Run hourly by the reminder job;
+ * logs rather than throws.
+ */
+export async function pruneAiUsage(): Promise<void> {
+	// claim_ai_call counts by Postgres' current_date, which is UTC on Supabase.
+	const today = new Date().toISOString().slice(0, 10);
+	const { error } = await getSupabaseAdmin().from('ai_usage').delete().lt('day', today);
+	if (error) console.error('[ai] could not prune usage counts', error.message);
+}
+
+/**
  * One chat completion whose answer must match `schema`.
  * Never logs the messages or the answer: they can hold users' contacts.
  */

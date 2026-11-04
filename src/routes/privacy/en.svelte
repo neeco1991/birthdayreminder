@@ -72,6 +72,11 @@
 		We don't use analytics or advertising trackers, we don't collect payment data, and we don't buy
 		data about you from anyone.
 	</p>
+	<p>
+		Only your email address is required: without it we can't create your account, sign you in or
+		send your reminders. Everything else is up to you: settings start with defaults you can change,
+		and you decide which contacts and details to add.
+	</p>
 
 	<h2>3. Why we use it, and on what legal basis</h2>
 	<ul>
@@ -162,9 +167,6 @@
 			<strong>Supabase</strong> (database and sign-in). The database is hosted in the EU (Ireland).
 		</li>
 		<li>
-			<strong>Vercel</strong> (website hosting). The server code runs in the EU (Ireland).
-		</li>
-		<li>
 			<strong>Resend</strong> (sending emails). Resend handles your email address and the content of your
 			reminders, which includes your contacts' names, birthdays and interests.
 		</li>
@@ -172,7 +174,19 @@
 			<strong>OpenRouter</strong> (AI features). It routes AI requests to AI providers in Europe that
 			don't store them, as described in section 5.
 		</li>
+		<li>
+			<strong>Namecheap</strong> (email forwarding for our domain). Emails you send to
+			<a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>, including replies to reminder emails,
+			pass through Namecheap on their way to the mailbox where we read them.
+		</li>
 	</ul>
+	<p>
+		<strong>Vercel</strong> hosts the website, and the server code runs in the EU (Ireland). Every
+		request to the site passes through Vercel, so it handles what you send and see there. On the
+		free plan we use, Vercel doesn't offer a data processing agreement: it handles this data under
+		its own
+		<a href="https://vercel.com/legal/privacy-policy" rel="noopener noreferrer">privacy policy</a>.
+	</p>
 	<p>
 		If you choose "Continue with Google", Google signs you in and acts as an independent controller
 		for your Google account, under
@@ -180,17 +194,21 @@
 			>Google's privacy policy</a
 		>.
 	</p>
+	<p>
+		The mailbox where we read your emails is a Gmail account, so Google also handles them, under the
+		same policy.
+	</p>
 	<p>We may also disclose data where the law requires it.</p>
 
 	<h2>7. Transfers outside the EU</h2>
 	<p>
-		Supabase, Vercel, Resend and OpenRouter are US companies, so data may be accessed from outside
-		the European Economic Area even where it's stored or processed in the EU, for example by their
-		support teams. For AI features, the content of requests is processed in Europe, while OpenRouter
-		may handle technical data about the requests (not their content) in the US. These transfers rely
-		on the European Commission's Standard Contractual Clauses included in each provider's data
-		processing agreement, or on the EU-US Data Privacy Framework for providers certified under it.
-		You can ask us for more details.
+		Supabase, Vercel, Resend, OpenRouter, Namecheap and Google are US companies, so data may be
+		accessed from outside the European Economic Area even where it's stored or processed in the EU,
+		for example by their support teams. For AI features, the content of requests is processed in
+		Europe, while OpenRouter may handle technical data about the requests (not their content) in the
+		US. These transfers rely on the European Commission's Standard Contractual Clauses included in
+		each provider's data processing agreement, or on the EU-US Data Privacy Framework for providers
+		certified under it. You can ask us for more details.
 	</p>
 
 	<h2>8. How long we keep it</h2>

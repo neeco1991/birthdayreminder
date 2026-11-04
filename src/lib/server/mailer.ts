@@ -1,4 +1,5 @@
 import { Resend } from 'resend';
+import { dev } from '$app/env';
 import { EMAIL_FROM, RESEND_API_KEY } from '$app/env/private';
 import { CONTACT_EMAIL } from '#lib/legal.ts';
 
@@ -16,6 +17,12 @@ const BATCH_SIZE = 100;
 /** Sends the emails and returns, for each one, whether it was accepted. */
 export async function sendEmails(emails: OutgoingEmail[]): Promise<boolean[]> {
 	if (!RESEND_API_KEY) {
+		// Never print emails outside dev: they hold users' contacts, and the host keeps its logs.
+		// Reporting them as failed releases their claims, so they go out once the key is set.
+		if (!dev) {
+			console.error('[mailer] RESEND_API_KEY not set, not sending', emails.length, 'emails');
+			return emails.map(() => false);
+		}
 		for (const email of emails) {
 			console.log(
 				`[mailer] RESEND_API_KEY not set, not sending.\nTo: ${email.to}\nSubject: ${email.subject}\n\n${email.text}\n`

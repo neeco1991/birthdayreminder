@@ -3,6 +3,7 @@ import { ageAt, toISODate, type CalendarDate } from '#lib/dates.ts';
 import type { Tables } from '#lib/database.types.ts';
 import type { Locale } from '#lib/i18n.ts';
 import { renderDigest, type DigestItem } from './email.ts';
+import { pruneAiUsage } from './ai.ts';
 import { cacheKey, giftProfile, pruneGiftIdeasCache, resolveGiftIdeas } from './gift-ideas.ts';
 import { sendEmails, type OutgoingEmail } from './mailer.ts';
 import { dueReminders, sendDateFor, type DueReminder } from './reminders.ts';
@@ -86,7 +87,7 @@ export async function runReminderJob(now = new Date()): Promise<JobResult> {
 	const db = getSupabaseAdmin();
 
 	// First, so it runs every hour even when there's nothing to send.
-	await pruneGiftIdeasCache();
+	await Promise.all([pruneGiftIdeasCache(), pruneAiUsage()]);
 
 	const profiles = await fetchAll<Profile>((from, to) =>
 		db

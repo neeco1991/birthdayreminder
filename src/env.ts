@@ -28,7 +28,8 @@ export const variables = defineEnvVars({
 	},
 	RESEND_API_KEY: {
 		schema: (value) => value || undefined,
-		description: 'Resend API key. Leave empty to log emails to the console instead of sending them.'
+		description:
+			'Resend API key. Leave empty in dev to log emails to the console; in production, nothing is sent without it.'
 	},
 	OPENROUTER_API_KEY: {
 		schema: (value) => value || undefined,

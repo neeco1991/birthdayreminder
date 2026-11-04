@@ -21,6 +21,12 @@ vi.mock('./gift-ideas.ts', async (importOriginal) => ({
 	pruneGiftIdeasCache: () => pruneGiftIdeasCache()
 }));
 
+const pruneAiUsage = vi.fn<() => Promise<void>>();
+vi.mock('./ai.ts', async (importOriginal) => ({
+	...(await importOriginal<typeof import('./ai.ts')>()),
+	pruneAiUsage: () => pruneAiUsage()
+}));
+
 type Row = Record<string, unknown>;
 let tables: Record<'profiles' | 'contacts' | 'reminder_log', Row[]>;
 
@@ -111,6 +117,7 @@ beforeEach(() => {
 	resolveGiftIdeas.mockReset();
 	resolveGiftIdeas.mockImplementation(async () => new Map());
 	pruneGiftIdeasCache.mockReset();
+	pruneAiUsage.mockReset();
 	tables = {
 		profiles: [profile('ana')],
 		contacts: [
@@ -228,11 +235,12 @@ describe('runReminderJob', () => {
 		expect(sendEmails).not.toHaveBeenCalled();
 	});
 
-	it('prunes expired gift ideas on every run, even with nothing to send', async () => {
+	it('prunes expired gift ideas and old AI usage on every run, even with nothing to send', async () => {
 		tables.profiles = [];
 
 		await runReminderJob(now);
 
 		expect(pruneGiftIdeasCache).toHaveBeenCalledTimes(1);
+		expect(pruneAiUsage).toHaveBeenCalledTimes(1);
 	});
 });

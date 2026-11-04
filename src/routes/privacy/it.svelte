@@ -78,6 +78,11 @@
 		Non usiamo strumenti di analisi o tracciamento pubblicitario, non raccogliamo dati di pagamento
 		e non acquistiamo dati su di te da nessuno.
 	</p>
+	<p>
+		Serve solo il tuo indirizzo email: senza, non possiamo creare il tuo account, farti accedere o
+		inviarti i promemoria. Tutto il resto dipende da te: le impostazioni partono da valori
+		predefiniti che puoi cambiare, e sei tu a decidere quali contatti e dettagli aggiungere.
+	</p>
 
 	<h2>3. Perché li usiamo e su quale base giuridica</h2>
 	<ul>
@@ -174,9 +179,6 @@
 			<strong>Supabase</strong> (database e accesso). Il database si trova nell'UE (Irlanda).
 		</li>
 		<li>
-			<strong>Vercel</strong> (hosting del sito). Il codice del server viene eseguito nell'UE (Irlanda).
-		</li>
-		<li>
 			<strong>Resend</strong> (invio delle email). Resend tratta il tuo indirizzo email e il contenuto
 			dei promemoria, che comprende nomi, compleanni e interessi dei tuoi contatti.
 		</li>
@@ -184,7 +186,21 @@
 			<strong>OpenRouter</strong> (funzioni di IA). Instrada le richieste all'IA verso fornitori in Europa
 			che non le conservano, come descritto nella sezione 5.
 		</li>
+		<li>
+			<strong>Namecheap</strong> (inoltro delle email del nostro dominio). Le email che scrivi a
+			<a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>, comprese le risposte alle email di
+			promemoria, passano da Namecheap prima di arrivare alla casella in cui le leggiamo.
+		</li>
 	</ul>
+	<p>
+		<strong>Vercel</strong> ospita il sito, e il codice del server viene eseguito nell'UE (Irlanda).
+		Ogni richiesta al sito passa da Vercel, che quindi tratta ciò che invii e vedi sul sito. Con il
+		piano gratuito che usiamo, Vercel non offre un accordo sul trattamento dei dati: tratta questi
+		dati secondo la propria
+		<a href="https://vercel.com/legal/privacy-policy" rel="noopener noreferrer"
+			>informativa sulla privacy</a
+		>.
+	</p>
 	<p>
 		Se scegli "Continua con Google", è Google a farti accedere e agisce come titolare autonomo per
 		il tuo account Google, secondo
@@ -192,18 +208,22 @@
 			>l'informativa sulla privacy di Google</a
 		>.
 	</p>
+	<p>
+		La casella in cui leggiamo le tue email è un account Gmail, quindi anche Google le tratta,
+		secondo la stessa informativa.
+	</p>
 	<p>Possiamo inoltre comunicare dati quando la legge lo richiede.</p>
 
 	<h2>7. Trasferimenti fuori dall'UE</h2>
 	<p>
-		Supabase, Vercel, Resend e OpenRouter sono società statunitensi, quindi i dati possono essere
-		consultati da fuori dello Spazio economico europeo anche quando sono conservati o elaborati
-		nell'UE, ad esempio dai loro team di assistenza. Per le funzioni di IA, il contenuto delle
-		richieste viene elaborato in Europa, mentre OpenRouter può trattare negli Stati Uniti dati
-		tecnici sulle richieste (non il loro contenuto). Questi trasferimenti si basano sulle clausole
-		contrattuali standard della Commissione europea incluse nell'accordo sul trattamento dei dati di
-		ciascun fornitore, o sull'EU-US Data Privacy Framework per i fornitori certificati. Puoi
-		chiederci maggiori dettagli.
+		Supabase, Vercel, Resend, OpenRouter, Namecheap e Google sono società statunitensi, quindi i
+		dati possono essere consultati da fuori dello Spazio economico europeo anche quando sono
+		conservati o elaborati nell'UE, ad esempio dai loro team di assistenza. Per le funzioni di IA,
+		il contenuto delle richieste viene elaborato in Europa, mentre OpenRouter può trattare negli
+		Stati Uniti dati tecnici sulle richieste (non il loro contenuto). Questi trasferimenti si basano
+		sulle clausole contrattuali standard della Commissione europea incluse nell'accordo sul
+		trattamento dei dati di ciascun fornitore, o sull'EU-US Data Privacy Framework per i fornitori
+		certificati. Puoi chiederci maggiori dettagli.
 	</p>
 
 	<h2>8. Per quanto tempo li conserviamo</h2>

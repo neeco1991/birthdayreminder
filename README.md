@@ -73,10 +73,10 @@ Import the repo and set the variables from `.env.example` with prod values (`APP
 The privacy policy (`/privacy`) and terms (`/terms`) are written for GDPR and Italian law, and describe the setup above. The details they show live in `src/lib/legal.ts`. Before going live:
 
 - `CONTROLLER_NAME` in `src/lib/legal.ts` is the name GDPR requires on the policy. It appears only on `/privacy`, which is `noindex` and disallowed in `robots.txt`; keep it off every other page.
-- Make `privacy@birthdayreminder.eu` actually receive mail (Resend only sends), e.g. by forwarding it to your inbox with Cloudflare Email Routing or ImprovMX.
-- Accept the data processing agreements: Supabase (organization settings in the dashboard), Vercel ([vercel.com/legal/dpa](https://vercel.com/legal/dpa)), Resend ([resend.com/legal/dpa](https://resend.com/legal/dpa)) and OpenRouter. Keep a copy of each.
+- `privacy@birthdayreminder.eu` receives mail through Namecheap's email forwarding (Resend only sends), to a Gmail inbox. The policy names both (sections 6 and 7): update them if that changes.
+- Accept the data processing agreements: Supabase (organization settings in the dashboard), Resend ([resend.com/legal/dpa](https://resend.com/legal/dpa)), OpenRouter and Namecheap ([namecheap.com/legal/universal/data-processing-addendum](https://www.namecheap.com/legal/universal/data-processing-addendum/)). Keep a copy of each.
 - Google Cloud Console → Google Auth Platform → Branding: set the app home page, privacy policy (`<app url>/privacy`) and terms (`<app url>/terms`) links, and add the domain to authorized domains.
-- Vercel's Hobby plan is for non-commercial use only. Move to Pro before earning money from the app (e.g. affiliate links in gift ideas).
+- Prod runs on Vercel **Hobby**, which has no DPA (Vercel's covers only Pro and Enterprise: [vercel.com/legal/dpa](https://vercel.com/legal/dpa)). The policy says so in section 6, outside the list of providers with one. Its transfers rely on Vercel's EU-US Data Privacy Framework certification. Moving to Pro would add the DPA: then move Vercel back into that list. Hobby is also for non-commercial use only.
 
 Update the policy (and `LEGAL_LAST_UPDATED`), and email users about significant changes, whenever you:
 
