@@ -51,7 +51,7 @@ Create two projects, **dev** and **prod**, in the **Ireland (eu-west-1)** region
 5. **SMTP** (Authentication → Emails → SMTP Settings): use Resend (`smtp.resend.com`, port 465, user `resend`, password = a Resend API key, sender on your verified domain, sender name `Birthday Reminder` like `EMAIL_FROM`). Supabase's built-in mailer only allows a few emails per hour, too few for magic links.
 6. **Email templates:** after SMTP is set (Supabase refuses template changes on its own mailer), run `make auth-emails`. It uploads the **Magic Link** and **Confirm signup** emails from `src/lib/server/auth-emails.ts` (same layout as the reminder emails), and sets the code length and expiry they mention (6 digits, 1 hour). Their link goes to `/auth/confirm`, which works even when it's opened in another browser, and the code can be typed on the sign-in page, for when the email is read on another device. The `SUPABASE_ACCESS_TOKEN` needs **Project → Project Settings** and **Application services → Auth Config** set to **Read-write** (`project_admin_write` and `auth_config_write` in the API docs). Run it again whenever you change the templates or their text in `src/lib/messages/`; edits made in the dashboard are overwritten. Supabase has one template per project, so each one holds every language and picks one from `locale` in the user's metadata (see Languages).
 
-7. **Hourly job** (prod, plus dev if you want it there): edit the two placeholders in `supabase/setup/cron.sql` and run it in the SQL editor. It uses `pg_cron` + `pg_net` to call `GET /api/cron/reminders` every hour with `CRON_SECRET`. (Vercel Hobby cron can only run daily; on Vercel Pro you could use a `vercel.json` cron instead.)
+7. **Hourly job** (prod, plus dev if you want it there): `make db-push` schedules it (`pg_cron` + `pg_net` call `GET /api/cron/reminders` every hour), but it calls nothing until it knows where and with which secret. Edit the two placeholders in `supabase/setup/cron.sql` (the app URL, and the same `CRON_SECRET` as in that environment's app) and run it in the SQL editor. (Vercel Hobby cron can only run daily; on Vercel Pro you could use a `vercel.json` cron instead.)
 
 ## OpenRouter setup
 
@@ -146,7 +146,7 @@ src/routes/auth/                 OAuth callback, magic-link confirm, logout
 src/routes/unsubscribe/          turn off reminder emails from the link in them
 src/routes/dev/emails/           previews of every email (dev only)
 static/email/logo.png            logo for emails (they can't show SVG)
-supabase/migrations/             schema, RLS, signup trigger, AI limits, gift ideas cache, language
-supabase/setup/cron.sql          hourly schedule (run once per environment)
+supabase/migrations/             schema, RLS, signup trigger, AI limits, gift ideas cache, language, hourly schedule
+supabase/setup/cron.sql          app URL and secret for the hourly schedule (run once per environment)
 supabase/setup/auth-emails.ts    uploads the sign-in emails through the Management API
 ```

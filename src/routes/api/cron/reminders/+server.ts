@@ -12,7 +12,7 @@ function authorized(header: string | null): boolean {
 	return actual.length === expected.length && timingSafeEqual(actual, expected);
 }
 
-// Called hourly by pg_cron (see supabase/setup/cron.sql). GET matches what Vercel Cron sends too.
+// Called hourly by pg_cron (see supabase/migrations/20261105000000_reminders_cron.sql). GET matches what Vercel Cron sends too.
 export const GET: RequestHandler = async ({ request }) => {
 	if (!authorized(request.headers.get('authorization'))) error(401, 'Unauthorized');
 
